@@ -16,6 +16,8 @@
             // +=======================+
             Person p1 = new Person();
             Person.NbrPeople++;
+            System.Console.WriteLine("[ Enter Information for Person 1 ]");
+            System.Console.WriteLine();
             p1.GetPersonData();
             Person.SumOfAllAges += p1.Age;
             if (p1.Spouse != null)
@@ -30,7 +32,8 @@
             // +  create p2            +
             // +=======================+
             System.Console.WriteLine();
-            System.Console.WriteLine("Person 2");
+            System.Console.WriteLine("[ Enter Information for Person 2 ]");
+            System.Console.WriteLine();
             Person p2 = new Person();
             Person.NbrPeople++;
 
@@ -48,33 +51,27 @@
             // +  print person data    +
             // +=======================+
             System.Console.WriteLine();
-            System.Console.Write("Person 1 ");
+            System.Console.WriteLine("[ Printing Results ]");
+            System.Console.WriteLine();
             p1.PrintNameAndAge();
             if (p1.Spouse != null)
             {
-                System.Console.WriteLine();
-                System.Console.Write("Spouse ");
                 p1.Spouse.PrintNameAndAge();
             }
             else
             {
-                System.Console.WriteLine();
                 System.Console.WriteLine("("+p1.FirstName + " is not married.)");
             }
         
             System.Console.WriteLine();
-            System.Console.Write("Person 2 ");
             p2.PrintNameAndAge();
 
             if (p2.Spouse != null)
              {
-                System.Console.WriteLine();
-                System.Console.Write("Spouse ");
                 p2.Spouse.PrintNameAndAge();
              }
             else
              {
-                System.Console.WriteLine();
                 System.Console.WriteLine("(" + p2.FirstName + " is not married.)");
               }
             //
@@ -85,8 +82,7 @@
             System.Console.WriteLine();
             System.Console.WriteLine("Average Age: " + (Person.SumOfAllAges /Person.NbrPeople));
             System.Console.WriteLine();
-            System.Console.WriteLine("Press any key to Exit...");
-            System.Console.WriteLine();
+            System.Console.Write("Press any key to Exit...");
             System.Console.ReadKey();
         
         } // end of main

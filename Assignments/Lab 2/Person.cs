@@ -37,10 +37,10 @@
             }
             else
             {
-                System.Console.Write("Spouse ");
+                System.Console.Write("Spouse's ");
                 this.FirstName = GetFirstName();
                 this.LastName = this.Spouse.LastName;
-                System.Console.Write("Spouse ");
+                System.Console.Write("Spouse's ");
                 this.Age = GetAge();
             }
             if (IsMarried)
@@ -91,8 +91,8 @@
       }
     public void PrintNameAndAge()
      {
-            System.Console.WriteLine(this.GetFullName() + " Age " + this.Age);
+            System.Console.WriteLine(this.GetFullName() + " (Age " + this.Age + ")");
      } 
 
     } // end class Person
-} //end code
+} // end code
