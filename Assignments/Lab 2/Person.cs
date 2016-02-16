@@ -22,17 +22,77 @@
         // +==================================================================================+
         // | Public Methods for this.Person                                                   |
         // +==================================================================================+  
+        //
 
-        public string GetFullName()
+        public void GetPersonData()
         {
-            string fullName = "";
-            return fullName = this.FirstName + " " + this.LastName;
-        } 
+         bool IsMarried=false;
 
-        public void PrintNameAndAge()
+            if (Spouse == null)
+            {
+                this.FirstName = GetFirstName();
+                this.LastName = GetLastName();
+                this.Age = GetAge();
+                IsMarried = GetIsMarried(FirstName);
+            }
+            else
+            {
+                System.Console.Write("Spouse ");
+                this.FirstName = GetFirstName();
+                this.LastName = this.Spouse.LastName;
+                System.Console.Write("Spouse ");
+                this.Age = GetAge();
+            }
+            if (IsMarried)
+            {
+                Person s1 = new Person();
+                this.Spouse = s1;
+             }    
+    } //end GetPersonData
+
+    public string GetFirstName()
         {
-            System.Console.WriteLine(this.GetFullName() + " is " + this.Age + " years old.");
-        } 
+            System.Console.Write("First Name: ");
+            return System.Console.ReadLine();
+
+        }
+    public string GetLastName()
+        {
+            System.Console.Write("Last Name: ");
+            return System.Console.ReadLine();
+        }
+    
+    public int GetAge()
+        {
+            System.Console.Write("Age: ");
+            return int.Parse(System.Console.ReadLine());
+         }
+    public string GetFullName()
+         {
+            string fullName;
+            return fullName = FirstName + " " + LastName;
+         }
+
+    public bool GetIsMarried(string name)
+     {
+            bool isMarried = false;
+            string married = null;
+
+            while ((married != "Y") && (married != "N"))
+            {
+                System.Console.Write("Is " + name + " married (Y/N)? ");
+                married = System.Console.ReadLine();
+            }
+            if (married == "Y")
+                { 
+                isMarried = true;
+                }
+            return isMarried;
+      }
+    public void PrintNameAndAge()
+     {
+            System.Console.WriteLine(this.GetFullName() + " Age " + this.Age);
+     } 
 
     } // end class Person
 } //end code

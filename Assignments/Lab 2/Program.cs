@@ -1,94 +1,94 @@
 ﻿namespace Lab_2
 {
+    // +============================================================+
+    // +   Course: IT-1050                                          +
+    // +   Date: 2/15/16                                            +
+    // +   Assigment: Lab 2                                         +
+    // +   Name: Lauren Mazzoli                                     +
+    // +============================================================+
     class Program
     {
         static void Main(string[] args)
         {
 
-          //  bool isMarried = false;
-            string married = null;
+            // +=======================+
+            // +  create p1            +
+            // +=======================+
             Person p1 = new Person();
-
-            // Get name data
-
-            p1.FirstName = "Lauren";
-            p1.LastName = "Mazzoli";
-            p1.Age = 50;
-            p1.Spouse = null;
             Person.NbrPeople++;
-            p1.PrintNameAndAge();
+            p1.GetPersonData();
             Person.SumOfAllAges += p1.Age;
-
-            // get marital data
-
-            while ((married != "Y") && (married != "N"))
+            if (p1.Spouse != null)
             {
-                System.Console.Write("Hi " + p1.FirstName + ", Are you married (Y/N)?");
-                married = System.Console.ReadLine();
-            }
-            //  isMarried = bool.Parse(System.Console.ReadLine());
-            if (married == "Y")
-            //          if (isMarried)
-            {
-                Person s1 = new Person();
-                p1.Spouse = s1;
-                s1.FirstName = "Lou";
-                s1.LastName = p1.LastName;
-                s1.Age = 48;
                 Person.NbrPeople++;
+                p1.Spouse.Spouse = p1;
+                p1.Spouse.GetPersonData();
+                Person.SumOfAllAges += p1.Spouse.Age;
+            }
 
-                System.Console.WriteLine("Your spouse is: " + s1.GetFullName() + ".");
-                s1.PrintNameAndAge();
-                Person.SumOfAllAges += s1.Age;
-                s1.Spouse = p1;
-                // s1.GetSpouseData();
+            // +=======================+
+            // +  create p2            +
+            // +=======================+
+            System.Console.WriteLine();
+            System.Console.WriteLine("Person 2");
+            Person p2 = new Person();
+            Person.NbrPeople++;
+
+            p2.GetPersonData();
+            Person.SumOfAllAges += p2.Age;
+            if (p2.Spouse != null)
+            {
+                Person.NbrPeople++;
+                p2.Spouse.Spouse = p2;
+                p2.Spouse.GetPersonData();
+                Person.SumOfAllAges += p2.Spouse.Age;
+            }
+
+            // +=======================+
+            // +  print person data    +
+            // +=======================+
+            System.Console.WriteLine();
+            System.Console.Write("Person 1 ");
+            p1.PrintNameAndAge();
+            if (p1.Spouse != null)
+            {
+                System.Console.WriteLine();
+                System.Console.Write("Spouse ");
+                p1.Spouse.PrintNameAndAge();
             }
             else
             {
-                System.Console.WriteLine("You have no Spouse.");
+                System.Console.WriteLine();
+                System.Console.WriteLine("("+p1.FirstName + " is not married.)");
             }
-            Person p2 = new Person();
-            p2.FirstName = "Carolyn";
-            p2.LastName = "Mecenas";
-            p2.Age = 53;
-            p2.PrintNameAndAge();
-            Person.SumOfAllAges += p2.Age;
-            p2.Spouse = null;
-            married = null;
-            Person.NbrPeople++;
-
-            while ((married != "Y") && (married != "N"))
-            {
-                System.Console.Write("Hi " + p2.FirstName + ", Are you married (Y/N)?");
-                married = System.Console.ReadLine();
-            }
-            //isMarried= bool.Parse(System.Console.ReadLine());
-           if (married == "Y")
-            {
-                Person s2 = new Person();
-                s2.FirstName = "Mark";
-                s2.LastName = p2.LastName;
-                s2.Age = 55;
-                s2.Spouse = p2;
-                p2.Spouse = s2;
-                Person.NbrPeople++;
-                System.Console.WriteLine("Your spouse is: " + s2.GetFullName() + ". ");
-                s2.PrintNameAndAge();
-                Person.SumOfAllAges += s2.Age;
-                // s2.GetSpouseData
-                //
-            }
-        else
-            {
-                System.Console.WriteLine("You have no Spouse.");
-            }
-
-            System.Console.WriteLine("Total Sum of all Ages: " + Person.SumOfAllAges);
-            System.Console.WriteLine("Total Nbr of People: " + Person.NbrPeople);
-            System.Console.WriteLine("The Average Age is: " + (Person.SumOfAllAges /Person.NbrPeople));
-            System.Console.WriteLine("Press any key to continue...");
-            System.Console.ReadLine();
         
-        }
-    }
-}
+            System.Console.WriteLine();
+            System.Console.Write("Person 2 ");
+            p2.PrintNameAndAge();
+
+            if (p2.Spouse != null)
+             {
+                System.Console.WriteLine();
+                System.Console.Write("Spouse ");
+                p2.Spouse.PrintNameAndAge();
+             }
+            else
+             {
+                System.Console.WriteLine();
+                System.Console.WriteLine("(" + p2.FirstName + " is not married.)");
+              }
+            //
+            // +===================================+
+            // +     Print Summary Information     +
+            // +===================================+
+            //
+            System.Console.WriteLine();
+            System.Console.WriteLine("Average Age: " + (Person.SumOfAllAges /Person.NbrPeople));
+            System.Console.WriteLine();
+            System.Console.WriteLine("Press any key to Exit...");
+            System.Console.WriteLine();
+            System.Console.ReadKey();
+        
+        } // end of main
+    } //end of program
+} // end of namespace 
