@@ -9,7 +9,7 @@
         public int Age;
         public string FirstName;
         public string LastName;
-        public Person Spouse;       // holds address of Spouse instance of this.Person if they are married
+        public Person Spouse;       // holds address of Spouse instance of this.Person if this.person is married
 
         // +==================================================================================+
         // | Static Class Variables for class Person                                           |
@@ -17,64 +17,74 @@
 
         public static double SumOfAllAges;
 
-        public static int NbrPeople = 0;
+        public static int NbrPeople;
 
         // +==================================================================================+
-        // | Public Methods for this.Person                                                   |
+        // | Constructor Method                                                               |
         // +==================================================================================+  
         //
 
-        public void GetPersonData()
+        public Person()
         {
-         bool IsMarried=false;
+            Person.NbrPeople++;
+        }
 
+        // +==================================================================================+
+        // | Member Methods for this.Person                                                   |
+        // +==================================================================================+  
+        //
+
+        public void GetPersonData(string name)
+        {
             if (Spouse == null)
             {
-                this.FirstName = GetFirstName();
-                this.LastName = GetLastName();
+                System.Console.WriteLine("[ Enter Information for Person " + name + " ]");
+                System.Console.WriteLine();
+                this.FirstName = GetFirstName(null);
+                this.LastName = GetLastName(null);
                 this.Age = GetAge();
-                IsMarried = GetIsMarried(FirstName);
+                if (GetIsMarried(FirstName) == true)
+                {
+                    CreateSpouse();
+                    System.Console.WriteLine();
+                }
             }
             else
             {
-                System.Console.Write("Spouse's ");
-                this.FirstName = GetFirstName();
+                this.FirstName = GetFirstName("Spouse's ");
                 this.LastName = this.Spouse.LastName;
-                System.Console.Write("Spouse's ");
                 this.Age = GetAge();
             }
-            if (IsMarried)
-            {
-                Person s1 = new Person();
-                this.Spouse = s1;
-             }    
-    } //end GetPersonData
+        }
 
-    public string GetFirstName()
+        public string GetFirstName(string name)
         {
-            System.Console.Write("First Name: ");
+            System.Console.Write(name + "First Name: ");
             return System.Console.ReadLine();
 
         }
-    public string GetLastName()
+        public string GetLastName(string name)
         {
-            System.Console.Write("Last Name: ");
+            System.Console.Write(name + "Last Name: ");
             return System.Console.ReadLine();
         }
-    
-    public int GetAge()
+
+        public int GetAge()
         {
             System.Console.Write("Age: ");
-            return int.Parse(System.Console.ReadLine());
-         }
-    public string GetFullName()
-         {
+            Age = int.Parse(System.Console.ReadLine());
+            Person.SumOfAllAges += Age;
+            return Age;
+        }
+
+        public string GetFullName()
+        {
             string fullName;
             return fullName = FirstName + " " + LastName;
-         }
+        }
 
-    public bool GetIsMarried(string name)
-     {
+        public bool GetIsMarried(string name)
+        {
             bool isMarried = false;
             string married = null;
 
@@ -84,15 +94,30 @@
                 married = System.Console.ReadLine();
             }
             if (married == "Y")
-                { 
+            {
                 isMarried = true;
-                }
+            }
             return isMarried;
-      }
-    public void PrintNameAndAge()
-     {
-            System.Console.WriteLine(this.GetFullName() + " (Age " + this.Age + ")");
-     } 
+        }
 
-    } // end class Person
-} // end code
+        public void CreateSpouse()
+        {
+            this.Spouse = new Person();
+            this.Spouse.Spouse = this;
+            this.Spouse.GetPersonData(null);
+        }
+        public void PrintNameAndAge()
+        {
+            System.Console.WriteLine(this.GetFullName() + " (Age " + this.Age + ")");
+            if (this.Spouse != null)
+            {
+                System.Console.WriteLine(this.Spouse.GetFullName() + " (Age " + this.Spouse.Age + ")");
+            }
+            else
+            {
+                System.Console.WriteLine("(" + this.FirstName + " is not married.)");
+
+            }
+        }
+    }
+} 
