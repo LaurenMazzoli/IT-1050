@@ -14,21 +14,21 @@
             Person.SumOfAllAges = 0;
 
             Person p1 = new Person();
-            p1.GetPersonData("p1");
+            Print.PersonHdr("1");
+            p1.GetData();
 
             Person p2 = new Person();
-            p2.GetPersonData("p2");
+            Print.PersonHdr("2");
+            p2.GetData();
 
-            System.Console.WriteLine();
-            System.Console.WriteLine("[ Printing Results ]");
+            Print.ResultHdr();            
             p1.PrintNameAndAge();
             p2.PrintNameAndAge();
-            System.Console.WriteLine();
-            System.Console.WriteLine("Average Age: " + (Person.SumOfAllAges /Person.NbrPeople));
-            System.Console.WriteLine();
-            System.Console.Write("Press any key to Exit...");
-            System.Console.ReadKey();
-        
+            Print.AvgAge();
+            // System.Console.WriteLine();
+            // System.Console.WriteLine("Average Age: " + (Person.SumOfAllAges /Person.NbrPeople));
+
+            Print.ProgEnd();
         } // end of main
     } //end of program
 } // end of namespace 

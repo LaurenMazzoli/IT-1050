@@ -3,7 +3,7 @@
     class Person
     {
         // +==================================================================================+
-        // | Standard Member Variables for this.Person                                        |
+        // | Member Variables for this.Person                                        |
         // +==================================================================================+  
 
         public int Age;
@@ -12,15 +12,14 @@
         public Person Spouse;       // holds address of Spouse instance of this.Person if this.person is married
 
         // +==================================================================================+
-        // | Static Class Variables for class Person                                           |
+        // | Static Class Variables for class Person                                          |
         // +==================================================================================+  
 
         public static double SumOfAllAges;
-
         public static int NbrPeople;
 
         // +==================================================================================+
-        // | Constructor Method                                                               |
+        // | Constructor Method for class Person                                              |
         // +==================================================================================+  
         //
 
@@ -33,29 +32,56 @@
         // | Member Methods for this.Person                                                   |
         // +==================================================================================+  
         //
+        public void GetData()
+        {
+          //  if (Spouse == null)
+           // {
+                // this = p1
+                GetPersonData(null);
+                if (GetIsMarried(this.FirstName) == true)
+                {
+                    GetSpouseData();
+                  //  System.Console.WriteLine();
+                }
+     
+           // }
+            //else
+            //{  // this = p1.spouse
+            //      GetSpouseData("Spouse's");
+              //  this.FirstName = GetFirstName("Spouse's ");
+              //  this.LastName = this.Spouse.LastName;
+              //  this.Age = GetAge();
+            //}
+        } // end GetData
 
         public void GetPersonData(string name)
         {
-            if (Spouse == null)
+            this.FirstName = GetFirstName(name);
+            if (name == null)
             {
-                System.Console.WriteLine("[ Enter Information for Person " + name + " ]");
-                System.Console.WriteLine();
-                this.FirstName = GetFirstName(null);
-                this.LastName = GetLastName(null);
-                this.Age = GetAge();
-                if (GetIsMarried(FirstName) == true)
-                {
-                    CreateSpouse();
-                    System.Console.WriteLine();
-                }
+                this.LastName = GetLastName(name);
             }
             else
             {
-                this.FirstName = GetFirstName("Spouse's ");
                 this.LastName = this.Spouse.LastName;
-                this.Age = GetAge();
+               
             }
+            this.Age = GetAge();
         }
+
+        public void GetSpouseData()
+        {
+            this.Spouse = new Person();
+            this.Spouse.Spouse = this;
+            this.Spouse.GetPersonData("Spouse's ");
+        }
+
+        //public void GetSpouseData(string name)
+        //{
+        //    this.FirstName = GetFirstName(name);
+        //    this.LastName = this.Spouse.LastName;
+        //    this.Age = GetAge();
+        // }
 
         public string GetFirstName(string name)
         {
@@ -99,13 +125,7 @@
             }
             return isMarried;
         }
-
-        public void CreateSpouse()
-        {
-            this.Spouse = new Person();
-            this.Spouse.Spouse = this;
-            this.Spouse.GetPersonData(null);
-        }
+  
         public void PrintNameAndAge()
         {
             System.Console.WriteLine(this.GetFullName() + " (Age " + this.Age + ")");
