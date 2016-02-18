@@ -2,7 +2,7 @@
 {
     // +============================================================+
     // +   Course: IT-1050                                          +
-    // +   Date: 2/15/16                                            +
+    // +   Date: 2/17/16                                            +
     // +   Assigment: Lab 2                                         +
     // +   Name: Lauren Mazzoli                                     +
     // +============================================================+
@@ -10,8 +10,17 @@
     {
         static void Main(string[] args)
         {
+
+            // +===============================================+
+            // |       Variable Assignment                     |
+            // +===============================================+
+
             Person.NbrPeople = 0;
             Person.SumOfAllAges = 0;
+
+            // +===============================================+
+            // |       Main Code                               |
+            // +===============================================+
 
             Person p1 = new Person();
             Print.PersonHdr("1");
@@ -21,14 +30,18 @@
             Print.PersonHdr("2");
             p2.GetData();
 
-            Print.ResultHdr();            
-            p1.PrintNameAndAge();
-            p2.PrintNameAndAge();
-            Print.AvgAge();
-            // System.Console.WriteLine();
-            // System.Console.WriteLine("Average Age: " + (Person.SumOfAllAges /Person.NbrPeople));
+            // +===============================================+
+            // |       Print Results                           |
+            // +===============================================+
 
+            Print.ResultHdr();
+            p1.PrintPersonData();    
+            p2.PrintPersonData();
+            Print.AverageAge();
             Print.ProgEnd();
-        } // end of main
-    } //end of program
-} // end of namespace 
+
+        } // end of main 
+
+    } // end of program
+
+} // end of namespace lab2

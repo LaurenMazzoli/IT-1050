@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Person.cs" />
     <Compile Include="Print.cs" />
-    <Compile Include="PrintStuff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

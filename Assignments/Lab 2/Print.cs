@@ -6,6 +6,7 @@
         {
             System.Console.WriteLine();
             System.Console.WriteLine("[ Enter Information for Person " + prompt + " ]");
+            System.Console.WriteLine();
         }
 
         public static void ResultHdr()
@@ -13,7 +14,7 @@
             System.Console.WriteLine();
             System.Console.WriteLine("****************** [ Program Results ] ******************");
         }
-        public static void AvgAge()
+        public static void AverageAge()
         {
             System.Console.WriteLine();
             System.Console.WriteLine("Average Age: " + (Person.SumOfAllAges / Person.NbrPeople));
@@ -25,7 +26,5 @@
             System.Console.Write("*************** [ Press any key to Exit ] ***************");
             System.Console.ReadKey();
         }
-
     }
-
-} // end class Print
+} 
