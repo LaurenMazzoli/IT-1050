@@ -59,7 +59,7 @@
         {
             this.Spouse = new Person();
             this.Spouse.Spouse = this;
-            this.Spouse.GetPersonData("Spouse's ");
+            this.Spouse.GetPersonData("Spouse ");
         } 
 
         public string GetFirstName(string name)
@@ -77,7 +77,10 @@
         public int GetAge()
         {
             System.Console.Write("Age: ");
-            Age = int.Parse(System.Console.ReadLine());
+            while (int.TryParse(System.Console.ReadLine(), out Age) == false)
+            {
+                System.Console.Write("Age: ");
+            } 
             Person.SumOfAllAges += Age;
             return Age;
         }
@@ -111,7 +114,7 @@
 
         public void PrintNameAndAge()
         {
-            System.Console.WriteLine(this.GetFullName() + " (Age " + this.Age + ")");
+            System.Console.WriteLine(this.GetFullName()+"\t" + " (Age " + this.Age + ")");
         }
 
         public string GetFullName()

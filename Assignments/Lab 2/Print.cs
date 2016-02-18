@@ -13,6 +13,7 @@
         {
             System.Console.WriteLine();
             System.Console.WriteLine("****************** [ Program Results ] ******************");
+            System.Console.WriteLine();
         }
         public static void AverageAge()
         {
