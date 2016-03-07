@@ -21,10 +21,9 @@
         public void PrintStudentInfo()
         {
             // private Instructor teacher;
+
             System.Console.WriteLine("==========================");
-            System.Console.WriteLine("== Student Information  ==");
-            System.Console.WriteLine("==========================");
-            System.Console.WriteLine("Name: " + this.Name);
+            System.Console.WriteLine("Student: " + this.Name);
             this.Teacher.PrintTeacherInfo();
             System.Console.WriteLine("Grade: " + this.Grade);
         }

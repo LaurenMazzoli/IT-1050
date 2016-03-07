@@ -18,13 +18,17 @@
             mike.SetStudentGrade(melissa, 90);
             mike.SetStudentGrade(matt, 92);
 
+            System.Console.WriteLine("==========================");
+            System.Console.WriteLine("== Student Information  ==");
+
             jane.PrintStudentInfo();
             joe.PrintStudentInfo();
             melissa.PrintStudentInfo();
             matt.PrintStudentInfo();
 
+            System.Console.WriteLine("==========================");
+            System.Console.WriteLine();
             System.Console.WriteLine("Press any key to end...");
-
             System.Console.ReadKey();
         }
     }
