@@ -14,18 +14,17 @@
             this.Teacher = teacher;
             this.Grade = 0;
         }
+
         public void SetGrade(int grade)
         {
             this.Grade = grade;
         }
         public void PrintStudentInfo()
         {
-            // private Instructor teacher;
-
-            System.Console.WriteLine("==========================");
-            System.Console.WriteLine("Student: " + this.Name);
+            Show.Divider();
+            Show.Name("Student", this.Name);
             this.Teacher.PrintTeacherInfo();
-            System.Console.WriteLine("Grade: " + this.Grade);
+            Show.Grade(this.Grade);
         }
     }
 }

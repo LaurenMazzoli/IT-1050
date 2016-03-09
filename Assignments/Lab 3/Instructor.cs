@@ -5,6 +5,7 @@
         private string Name;
         private string CourseName;
 
+    
         public Instructor(string name, string course)
         {
             this.Name = name;
@@ -17,8 +18,8 @@
     
         public void PrintTeacherInfo()
         {
-            System.Console.WriteLine("Instructor: " + this.Name);
-            System.Console.WriteLine("Course: " + this.CourseName);
+            Show.Name("Instructor", this.Name);
+            Show.Name("Course", this.CourseName);
         }
     }
 }
