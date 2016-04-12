@@ -22,14 +22,16 @@
         public void FillOrder(string type)
         {
             this.Type = type;
-            this.Adult = Gather.NbrItems("adult ticket");
-            this.Child = Gather.NbrItems("child ticket");
-            this.Senior = Gather.NbrItems("senior ticket");
-            this.SmallSoda = Gather.NbrItems("small soda");
-            this.LargeSoda = Gather.NbrItems("large soda");
-            this.Hotdog = Gather.NbrItems("hotdog");
-            this.Popcorn = Gather.NbrItems("popcorn");
-            this.Candy = Gather.NbrItems("candy product");
+            this.Adult = Gather.GetInt("adult tickets");
+            this.Child = Gather.GetInt("child tickets");
+            this.Senior = Gather.GetInt("senior tickets");
+            this.SmallSoda = Gather.GetInt("small sodas");
+            this.LargeSoda = Gather.GetInt("large sodas");
+            this.Hotdog = Gather.GetInt("hotdogs");
+            this.Popcorn = Gather.GetInt("popcorns");
+            this.Candy = Gather.GetInt("candies");
+
+            System.Console.WriteLine();
         }
         public double CalcPrice()
         {
@@ -59,9 +61,9 @@
 
             if (this.Type == "evening")
             {
-                if (tktpromo > 3)
+                if (tktpromo > 2)
                 {
-                    System.Console.WriteLine("** You have earned one free popcorn! **");
+                    System.Console.WriteLine("** You have earned one free popcorn **");
                  //   poppromo = this.Popcorn;
                     if (this.Popcorn > 1)
                     {
@@ -71,9 +73,9 @@
  
             }
             int candypromo = this.Candy;
-            while (candypromo >= 3)
+            while (candypromo > 3)
             {
-                System.Console.WriteLine("** Your 4th candy product is free! **");
+                System.Console.WriteLine("** Your 4th candy product is free **");
                 orderCost -= Order.candyPrice;
                 candypromo -= 4;
             }
@@ -105,7 +107,18 @@
 
         public void PrintMovie(double orderCost)
         {
-            System.Console.WriteLine("====== Order Summary ======: ");
+            System.Console.WriteLine("====== Order Summary ====== ");
+            System.Console.WriteLine();
+            System.Console.WriteLine("Movie Type: " + this.Type);
+            System.Console.WriteLine("Adult Ticket: "+this.Adult);
+            System.Console.WriteLine("Senior Ticket: " + this.Senior);
+            System.Console.WriteLine("Child Ticket: " + this.Child);
+            System.Console.WriteLine("Small Soda: " + this.SmallSoda);
+            System.Console.WriteLine("Large Soda: " + this.LargeSoda);
+            System.Console.WriteLine("Hot Dog: " + this.Hotdog);
+            System.Console.WriteLine("Popcorn: " + this.Popcorn);
+            System.Console.WriteLine("Candy: " + this.Candy);
+            System.Console.WriteLine();
             System.Console.WriteLine("Order Cost: $" + orderCost);
             System.Console.WriteLine("===========================");
             System.Console.WriteLine();

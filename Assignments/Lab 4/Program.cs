@@ -1,4 +1,5 @@
 ﻿namespace Lab_4
+
 {    // +============================================================+
     // +   Course: IT-1050                                          +
     // +   Date: 3/28/16                                            +
@@ -12,7 +13,7 @@
         {
             Order myMovie = new Order();
             //
-            string movieType = Gather.MovieType();
+            string movieType = Gather.GetMovieType();
 
             if (movieType != null)
             {
@@ -24,7 +25,7 @@
             }
             else
             {
-                System.Console.WriteLine("I guess you do not want to see a movie.");
+                System.Console.WriteLine("You did not order any movie tickets.");
             }
 
             System.Console.Write("Press any key to continue...");
