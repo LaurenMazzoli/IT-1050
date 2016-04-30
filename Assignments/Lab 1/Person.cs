@@ -2,7 +2,7 @@
 {
 
     public class Person
-    {
+    { // member variables of Person
         public string FirstName;
         public string MiddleInitial;
         public string LastName;
