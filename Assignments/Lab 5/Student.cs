@@ -5,22 +5,30 @@
         string Name;
         string Number;
 
+        public Student()
+        {
+            Name = "";
+            Number = "";
+        }
+
+
         public void GetStudentData()
         {
 
-            System.Console.Write("Student Name             : ");
-            this.Name = System.Console.ReadLine();
-
-            System.Console.Write("Student Number (S9999999): ");
-            this.Number = System.Console.ReadLine();
-
+            while (this.Name == "")
+            {
+                this.Name = Gather.GetString("Student Name");
+            }
+            while (this.Number == "")
+            {
+                this.Number = Gather.GetString("Student Number (S99999999)");
+            }
             System.Console.WriteLine();
-
         }
 
         public void PrintStudent()
         {
-            System.Console.WriteLine("Student    :" + this.Number + " " + this.Name); 
+            System.Console.WriteLine("Student: " + this.Number + " " + this.Name); 
         }        
     }
 }

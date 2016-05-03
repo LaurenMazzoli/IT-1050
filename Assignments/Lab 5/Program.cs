@@ -5,29 +5,53 @@
         static void Main(string[] args)
         {
 
-            bool courseOK = false;
+            bool courseOK=false;
+            Course newCourse;
+
             while (!courseOK)
             {
-                System.Console.Write("Course Name: ");
-                string name = System.Console.ReadLine();
-
-                System.Console.Write("Course Number: ");
-                string crn = System.Console.ReadLine();
-
-                Course course = new Course(name, crn);
-
-                System.Console.Write("Number of Students in Course " + crn + ": ");
-                int nbrStudents = int.Parse(System.Console.ReadLine());
-
-                System.Console.WriteLine();
-                course.GetCourseStudents(nbrStudents);
-
-                System.Console.WriteLine("=== Verifying Information ===");
-
-                courseOK = course.PrintInfo();
+                newCourse = GetData();
+                System.Console.WriteLine("===== Verifying Course Information =====");
+                courseOK = newCourse.PrintInfo();
             }
-            System.Console.Write("Press any key to Exit the program ...");
-            System.Console.ReadLine();
+            EndProg();
+ 
         } // end main
+
+        static Course GetData()
+        {
+
+            string name = "";
+            string crn = "";
+            System.Console.WriteLine();
+            System.Console.WriteLine("Please enter information for your course.");
+            while (name == "")
+            {
+                name = Gather.GetString("Course Name");
+            }
+            while (crn == "")
+            {
+                crn = Gather.GetString("CRN         ");
+            }
+            
+            Course course = new Course(name, crn);
+            
+            string prompt = "Number of Students ";
+            int nbrStudents = 0;
+            while (nbrStudents <= 0)
+            {
+                nbrStudents = Gather.GetInt(prompt);
+            }
+
+            System.Console.WriteLine();
+            course.GetCourseStudents(nbrStudents);
+            return course;
+        } // end GetData method
+
+        static void EndProg()
+        {
+            System.Console.WriteLine("Press any key to end Program...");
+            System.Console.ReadLine();
+        }
     } // end Program
 } // end Lab 5

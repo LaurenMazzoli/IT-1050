@@ -13,7 +13,7 @@ namespace Lab_5
         {
             this.Name = name;
             this.CRN = crn;
-        } // end Course Constructor
+        } // end constructor Course 
 
         public void GetCourseStudents(int NbrStudents)
         {
@@ -25,7 +25,7 @@ namespace Lab_5
                 this.ArrayOfStudents[i] = new Student();
                 this.ArrayOfStudents[i].GetStudentData();
             }
-        } // end GetCourseStudents Method
+        } // end method GetCourseStudents
 
         public bool PrintInfo()
         {
@@ -38,16 +38,10 @@ namespace Lab_5
             }
 
             System.Console.WriteLine();
-            System.Console.Write("Is all information correct: (Y/N): ");
-
-            string input = System.Console.ReadLine();
-            bool isOK = false;
-
-            if (input.ToLower().StartsWith("y"))
-            { 
-                    isOK = true;
-            }
-            return isOK;
+            System.Console.WriteLine("If the information is correct, press'Y' to continue.");
+            System.Console.WriteLine("Pressing 'N' will allow you to start over.");
+            string prompt = "Enter (Y/N)";
+            return Gather.GetBool(prompt);
        }
     } // end class Course
 } 
