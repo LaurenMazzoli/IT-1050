@@ -6,11 +6,12 @@ namespace Lab_5
         public static string GetString(string prompt)
         {
             prompt += ": ";
-            string input = null;
-            while (input == null)
+            string input = "";
+            while (input == "")
             {
                 System.Console.Write(prompt);
                 input = System.Console.ReadLine();
+                input = input.Trim();
             }
             return input;
         } // end GetString method
@@ -41,6 +42,7 @@ namespace Lab_5
             {
                 System.Console.Write(prompt);     
                 input = System.Console.ReadLine().ToLower();
+
             }
 
             bool isOK = true;

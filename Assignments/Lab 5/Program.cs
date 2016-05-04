@@ -20,19 +20,11 @@
 
         static Course GetData()
         {
-
-            string name = "";
-            string crn = "";
             System.Console.WriteLine();
             System.Console.WriteLine("Please enter information for your course.");
-            while (name == "")
-            {
-                name = Gather.GetString("Course Name");
-            }
-            while (crn == "")
-            {
-                crn = Gather.GetString("CRN         ");
-            }
+            System.Console.WriteLine();
+            string name = Gather.GetString("Course Name        ");
+            string crn =  Gather.GetString("CRN                ");
             
             Course course = new Course(name, crn);
             

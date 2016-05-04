@@ -36,11 +36,8 @@ namespace Lab_5
             {
                 this.ArrayOfStudents[i].PrintStudent();
             }
-
             System.Console.WriteLine();
-            System.Console.WriteLine("If the information is correct, press'Y' to continue.");
-            System.Console.WriteLine("Pressing 'N' will allow you to start over.");
-            string prompt = "Enter (Y/N)";
+            string prompt = "Data ok? (Y = continue/ N = start over)";
             return Gather.GetBool(prompt);
        }
     } // end class Course
